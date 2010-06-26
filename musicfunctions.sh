@@ -10,7 +10,7 @@ stripflactags()
 
 refreshflactags()
 {
-    stripflactags "$@" && setflactags.pl "$@" && listflactags "$@"
+    stripflactags "$@" && setflactags.py "$@" && listflactags "$@"
 }
 
 strippictags()
@@ -43,7 +43,7 @@ refreshpictags()
 
 importcd()
 {
-    cdparanoia -B && tracknames.pl *.wav && flac *.wav
+    cdparanoia -B && tracknames.py *.wav && flac *.wav
     refreshflactags *.flac && rm *.wav
 }
 
@@ -79,7 +79,7 @@ flac2mp3()
     done
 }
 
-dogg()
+flac2ogg()
 {
     for f in $@; do
 	oggenc -o "$(basename ${f%flac})ogg" "$f"
