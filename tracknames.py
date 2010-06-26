@@ -13,7 +13,7 @@ tracks = root.getElementsByTagName('track')
 
 for arg in sys.argv[1:]:
     match = re.search(r'(\d\d).*\.(\w{3,4})$', arg)
-    (num, ext) = match.group(1, 2)
+    num, ext = match.group(1, 2)
     node = tracks.item(int(num) - 1)
     title = node.getElementsByTagName('title').item(0).firstChild.nodeValue
     title = re.sub(r'[][ ?!\'"():]', '_', title)
