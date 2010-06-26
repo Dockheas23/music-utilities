@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp cddb_fetch.pl musicfunctions.sh quickInfo.py setflactags.py tracknames.py \
+    ~/bin
