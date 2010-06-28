@@ -23,4 +23,4 @@ for i in range(len(tracks)):
     trackNumTag.appendChild(xmlDoc.createTextNode(str(i + 1)))
     titleTag.appendChild(xmlDoc.createTextNode(tracks[i].strip()))
 
-xmlDoc.writexml(sys.stdout, encoding='utf-8')
+xmlDoc.writexml(sys.stdout, addindent='    ', newl='\n', encoding='utf-8')

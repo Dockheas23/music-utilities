@@ -17,9 +17,11 @@ for arg in sys.argv[1:]:
     options = ""
     tagsAdded = {}
     for tagName, tagValue in trackTags.items():
-        options += '--set-tag="' + tagName.upper() + '=' + tagValue + '" '
+        tagString = tagName.upper() + '=' + tagValue.strip()
+        options += '--set-tag="' + tagString + '" '
         tagsAdded[tagName] = 1
     for tagName, tagValue in albumTags.items():
         if tagName not in tagsAdded:
-            options += '--set-tag="' + tagName.upper() + '=' + tagValue + '" '
+            tagString = tagName.upper() + '=' + tagValue.strip()
+            options += '--set-tag="' + tagString + '" '
     os.system('metaflac ' + options + arg)
