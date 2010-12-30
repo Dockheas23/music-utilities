@@ -7,17 +7,36 @@ if len(sys.argv) == 1:
     print('Usage: {} <track> [...]\n'.format(os.path.basename(sys.argv[0])))
     sys.exit(1)
 
-dom = minidom.parse('info.xml')
-root = dom.documentElement
-tracks = root.getElementsByTagName('track')
+ORIGINAL_DIR = os.getcwd()
 
-for arg in sys.argv[1:]:
-    match = re.search(r'(\d\d).*\.(\w{3,4})$', arg)
-    num, ext = match.group(1, 2)
-    node = tracks.item(int(num) - 1).getElementsByTagName('title').item(0)
-    title = node.firstChild.nodeValue.strip()
-    title = re.sub(r'[][ ?!\'"():]', '_', title)
-    title = re.sub(r'[,.]', '', title)
-    title = re.sub(r'/', '--', title)
-    title = re.sub(r'&', 'And', title)
-    os.rename(arg, num + '-' + title + '.' + ext)
+# Replacements for special characters in filenames
+substitutions = [ # (pattern, replacement)
+        (r'[][ ?!\'"():]', '_'),
+        (r'[,.]', ''),
+        (r'/', '--'),
+        (r'&', 'And'),
+        ]
+
+dirs = {os.path.dirname(x) for x in sys.argv[1:]}
+files = {d:
+        [os.path.basename(f) for f in sys.argv[1:] if os.path.dirname(f) == d]
+        for d in dirs}
+
+for directory, fileList in files.items():
+    if directory != '': os.chdir(directory)
+    try:
+        dom = minidom.parse('info.xml')
+    except IOError:
+        print("Error opening info.xml in directory ", d, file=sys.stderr)
+    root = dom.documentElement
+    tracks = root.getElementsByTagName('track')
+    for fileName in fileList:
+        match = re.search(r'(\d\d).*\.(\w{3,4})$', fileName)
+        num, ext = match.group(1, 2)
+        node = tracks.item(int(num) - 1).getElementsByTagName('title').item(0)
+        title = node.firstChild.nodeValue.strip()
+        for pattern, replacement in substitutions:
+            title = re.sub(pattern, replacement, title)
+        os.rename(fileName, num + '-' + title + '.' + ext)
+
+os.chdir(ORIGINAL_DIR)

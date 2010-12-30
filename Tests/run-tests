@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ORIGINAL_DIR=~+
+DIR=$(dirname $0)
+
+errorCode=0
+
+cd $DIR
+for testFile in *.test.*; do
+    ./$testFile || { echo "Test failed:" $testFile; errorCode=1; }
+done
+cd $ORIGINAL_DIR
+
+[[ $errorCode -eq 0 ]] && echo "All tests passed!"
+exit $errorCode
