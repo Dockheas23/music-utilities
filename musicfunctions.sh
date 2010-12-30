@@ -49,8 +49,8 @@ importcd()
 
 flac2mp4()
 {
-    for f in $@; do
-	outfile=$(basename ${f%flac})m4a
+    for f; do
+	outfile=$(basename ${f/%flac/m4a})
 	artist=$(metaflac --show-tag=ARTIST "$f" | sed 's/^ARTIST=//')
 	album=$(metaflac --show-tag=ALBUM "$f" | sed 's/^ALBUM=//')
 	genre=$(metaflac --show-tag=GENRE "$f" | sed 's/^GENRE=//')
@@ -65,8 +65,8 @@ flac2mp4()
 
 flac2mp3()
 {
-    for f in $@; do
-	outfile=$(basename ${f%flac})mp3
+    for f; do
+	outfile=$(basename ${f/%flac/mp3})
 	artist=$(metaflac --show-tag=ARTIST "$f" | sed 's/^ARTIST=//')
 	album=$(metaflac --show-tag=ALBUM "$f" | sed 's/^ALBUM=//')
 	genre=$(metaflac --show-tag=GENRE "$f" | sed 's/^GENRE=//')
@@ -81,7 +81,7 @@ flac2mp3()
 
 flac2ogg()
 {
-    for f in $@; do
-	oggenc -o "$(basename ${f%flac})ogg" "$f"
+    for f; do
+	oggenc -o "$(basename ${f/%flac/ogg})" "$f"
     done
 }
