@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <dir-name>"
+    exit 1
+fi
+
+OLDDIR="$(pwd)"
+cd $1
+
+CURDIR="$(pwd)"
+FLACROOT=~/Music/FLAC_Music
+OGGROOT=~/Music/Ogg_Music
+OGGDIR="${CURDIR/$FLACROOT/$OGGROOT}"
+
+if [ ! -e "$OGGDIR" ]; then
+    mkdir -p "$OGGDIR"
+fi
+
+for f in *; do
+    if [ -d "$f" ]; then
+	$0 "$f"
+    else
+	case "$f" in
+	    *.flac | *.wav)
+		oggfile="$OGGDIR/${f/%flac/ogg}"
+		if [ ! -e $oggfile -o $f -nt $oggfile ]; then
+		    oggenc -o "$oggfile" "$f"
+		fi;;
+	    *)
+		rsync -v "$f" "$OGGDIR/$f";;
+	esac
+    fi
+done
+
+cd $OLDDIR
