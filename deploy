@@ -18,5 +18,5 @@ else
     if [ ! -d $HOME/bin ]; then
         mkdir $HOME/bin
     fi
-    rsync scripts/* $HOME/bin
+    rsync $(dirname $0)/scripts/* $HOME/bin
 fi
