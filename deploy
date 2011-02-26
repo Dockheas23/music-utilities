@@ -1,7 +1,22 @@
 #!/bin/bash
 
-if [ ! -d $HOME/bin ]; then
-    mkdir $HOME/bin
+if getopts uh optName; then
+    case $optName in
+        "u")
+            for f in $(dirname $0)/scripts/*; do
+                rm "$HOME/bin/$(basename "$f")"
+            done;;
+        *)
+            echo "Usage:        $(basename $0) [-h] [-u]"
+            echo "      Run without options to install scripts"
+            echo "Options:"
+            echo "      -h      Display this help"
+            echo "      -u      Uninstall scripts from user's bin directory"
+            ;;
+    esac
+else
+    if [ ! -d $HOME/bin ]; then
+        mkdir $HOME/bin
+    fi
+    rsync scripts/* $HOME/bin
 fi
-
-rsync scripts/* $HOME/bin

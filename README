@@ -4,3 +4,6 @@ To install, run:
 $ ./deploy
 This will copy the scripts to the users bin directory ($HOME/bin), creating it
 if it doesn't exist.
+
+To uninstall, run:
+$ ./deploy -u
