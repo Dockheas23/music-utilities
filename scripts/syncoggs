@@ -28,7 +28,9 @@ for f in *; do
 		    oggenc -o "$oggfile" "$f"
 		fi;;
 	    *)
-		rsync -v "$f" "$OGGDIR/$f";;
+                if [ ! -e $OGGDIR/$f -o $f -nt $OGGDIR/$f ]; then
+                    rsync -v "$f" "$OGGDIR/$f"
+                fi;;
 	esac
     fi
 done
