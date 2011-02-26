@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTPROG=../tracknames.py
+TESTPROG=../scripts/tracknames.py
 TMP=/tmp
 TEMPDIR=$TMP/$(basename $0).$$.$(date +%s)
 

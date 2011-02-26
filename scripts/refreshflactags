@@ -1,0 +1,3 @@
+#!/bin/bash
+
+stripflactags "$@" && setflactags.py "$@" && listflactags "$@"

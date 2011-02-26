@@ -1,18 +1,3 @@
-listflactags()
-{
-    metaflac --list --block-type=VORBIS_COMMENT "$@"
-}
-
-stripflactags()
-{
-    metaflac --remove --block-type=VORBIS_COMMENT "$@"
-}
-
-refreshflactags()
-{
-    stripflactags "$@" && setflactags.py "$@" && listflactags "$@"
-}
-
 strippictags()
 {
     metaflac --remove --block-type=PICTURE "$@"
@@ -39,12 +24,6 @@ refreshpictags()
     then
 	strippictags "$@" && setpictags "$@"
     fi
-}
-
-importcd()
-{
-    cdparanoia -B && tracknames.py *.wav && flac *.wav
-    refreshflactags *.flac && rm *.wav
 }
 
 flac2mp4()

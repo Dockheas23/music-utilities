@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cdparanoia -B && tracknames.py *.wav && flac *.wav
+refreshflactags *.flac && rm *.wav
