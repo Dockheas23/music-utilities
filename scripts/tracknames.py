@@ -15,6 +15,12 @@ substitutions = [ # (pattern, replacement)
         (r'[,.]', ''),
         (r'/', '--'),
         (r'&', 'And'),
+        (r'[áàä]', 'a'),
+        (r'[éèë]', 'e'),
+        (r'[íìï]', 'i'),
+        (r'[óòö]', 'o'),
+        (r'[úùü]', 'u'),
+        (r'[^A-Za-z0-9_.-]', '_'),
         ]
 
 dirs = {os.path.dirname(x) for x in sys.argv[1:]}

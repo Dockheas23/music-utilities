@@ -14,12 +14,12 @@ cat > $TEMPDIR/info.xml <<'EOF'
 
 <track>
 <tracknumber>1</tracknumber>
-<title>Hello World</title>
+<title>Hellö Worldé</title>
 </track>
 
 <track>
 <tracknumber>2</tracknumber>
-<title>You, Me &amp; Bobby Magee/One More Time...</title>
+<title>You, Me &amp; Bobby Màgee/One More Time...</title>
 </track>
 
 <track>
@@ -31,7 +31,7 @@ EOF
 
 tests=('01.ogg' '03 Big Betty.flac' 'Track02---.wav')
 
-results=('01-Hello_World.ogg' \
+results=('01-Hello_Worlde.ogg' \
     '03-___Big___bad____Betty____.flac' \
     '02-You_Me_And_Bobby_Magee--One_More_Time.wav')
 
