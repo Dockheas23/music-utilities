@@ -9,6 +9,9 @@ root = tree.getroot()
 tracks = tree.findall('track')
 albumTags = {node.tag: node.text for node in root.getchildren()
         if node.tag != 'track'}
+if not 'artist' in albumTags:
+    albumTags['artist'] = 'Various'
+albumTags['albumartist'] = albumTags['artist']
 
 for arg in sys.argv[1:]:
     trackNum = re.match(r'\d{2}', arg)
