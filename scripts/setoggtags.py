@@ -31,11 +31,11 @@ for arg in sys.argv[1:]:
     for tagName, tagValues in trackTags.items():
         for tagValue in tagValues:
             tagString = tagName.upper() + '=' + tagValue.strip()
-            options += '--set-tag="' + tagString.replace('"', r'\"') + '" '
+            options += '-t "' + tagString.replace('"', r'\"') + '" '
             tagsAdded[tagName] = 1
     for tagName, tagValues in albumTags.items():
         for tagValue in tagValues:
             if tagName not in tagsAdded:
                 tagString = tagName.upper() + '=' + tagValue.strip()
-                options += '--set-tag="' + tagString.replace('"', r'\"') + '" '
-    os.system('metaflac ' + options + arg)
+                options += '-t "' + tagString.replace('"', r'\"') + '" '
+    os.system('vorbiscomment -w ' + options + arg)
