@@ -16,6 +16,6 @@ install:
 
 tarball:
 	mkdir -p $(ARTIFACT)
-	rsync -a scripts $(ARTIFACT)
+	rsync -a scripts Makefile $(ARTIFACT)
 	tar -zcf $(TARBALL) $(ARTIFACT)
 	rm -r $(ARTIFACT)
