@@ -1,0 +1,21 @@
+Source: music-utilities
+Section: utils
+Priority: extra
+Maintainer: George Boyle <george@thebuds.net>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://source.darknugget.com/music-utilities/
+Vcs-Git: git://gitorious.org/music-utilities/music-utilities.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/music-utilities.git;a=summary
+
+Package: music-utilities
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, flac, vorbis-tools, python3
+Recommends: cdparanoia
+Description: Command-line utilities for managing a music collection
+ TBC
+
+Package: music-utilities-doc
+Architecture: all
+Description: documentation for music-utilities
+ TBC

@@ -1,6 +1,6 @@
-prefix = /usr/local
-exec_prefix = ${prefix}
-bindir = ${exec_prefix}/bin
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
 builddir = target
 artifactdir = $(builddir)/$(ARTIFACT)
 sourcerepodir = $(DEV_SERVER):/var/www/source/$(PACKAGE_TARNAME)
@@ -8,15 +8,15 @@ archrepodir = $(DEV_SERVER):/var/www/repo/arch
 debianrepodir = $(DEV_SERVER):/var/www/repo/debian/incoming
 
 MD5_PROGRAM = md5sum
-INSTALL = /usr/bin/install -c
+INSTALL = @INSTALL@
 INSTALL_DIRECTORY = $(INSTALL) -d
-INSTALL_SCRIPT = ${INSTALL}
-RSYNC = /usr/bin/rsync
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+RSYNC = @RSYNC@
 
 DEV_SERVER = george@dev.darknugget.com
-PACKAGE_NAME = Music-Utilities
-PACKAGE_TARNAME = music-utilities
-PACKAGE_VERSION = 1.1
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_TARNAME = @PACKAGE_TARNAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
 ARTIFACT = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)
 INSTALL_FILES = scripts/*
 TAR_FILES = scripts configure Makefile.in README
