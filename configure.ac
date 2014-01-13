@@ -3,11 +3,13 @@
 
 AC_PREREQ([2.69])
 AC_INIT([Music-Utilities], [1.1], [george@thebuds.net])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
 AC_PROG_AWK
 AC_PROG_INSTALL
 AC_PATH_PROGS([RSYNC], [rsync scp])
+AC_PATH_PROGS([MD5_PROGRAM], [md5sum])
 
 # Checks for libraries.
 

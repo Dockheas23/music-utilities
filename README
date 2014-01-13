@@ -1,9 +1,1 @@
-A series of utilities for managing a music collection.
-
-To install, run:
-$ ./deploy
-This will copy the scripts to the users bin directory ($HOME/bin), creating it
-if it doesn't exist.
-
-To uninstall, run:
-$ ./deploy -u
+The finest utilities of music.
