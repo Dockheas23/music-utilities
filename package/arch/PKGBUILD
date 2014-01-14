@@ -4,12 +4,12 @@ pkgname=music-utilities
 pkgrel=1
 pkgdesc="The finest of utilities of music"
 arch=('any')
-url="http://source.darknugget.com/$pkgname"
+url="http://repo.darknugget.com/source/"
 license=('GPL')
 depends=('bash' 'python' 'flac' 'vorbis-tools')
 makedepends=('make')
 optdepends=('cdparanoia: to import from CDs' 'perl: to query CDDB')
-source=("http://source.darknugget.com/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("http://repo.darknugget.com/source/$pkgname-$pkgver.tar.gz")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver/"
