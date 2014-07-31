@@ -20,6 +20,7 @@ substitutions = [ # (pattern, replacement)
         (r'[íìï]', 'i'),
         (r'[óòö]', 'o'),
         (r'[úùü]', 'u'),
+        (r'[ß]', 'ss'),
         (r'[^A-Za-z0-9_.-]', '_'),
         ]
 

@@ -26,14 +26,21 @@ cat > $TEMPDIR/info.xml <<'EOF'
 <tracknumber>3</tracknumber>
 <title>&quot;::Big ([bad?]) Betty::!&quot;</title>
 </track>
+
+<track>
+<tracknumber>4</tracknumber>
+<title>Große Fuge</title>
+</track>
 </disc>
 EOF
 
-tests=('01.ogg' '03 Big Betty.flac' 'Track02---.wav')
+tests=('01.ogg' '03 Big Betty.flac' 'Track02---.wav' \
+    'Große Fuge 04.ogg')
 
 results=('01-Hello_Worlde.ogg' \
     '03-___Big___bad____Betty____.flac' \
-    '02-You_Me_And_Bobby_Magee--One_More_Time.wav')
+    '02-You_Me_And_Bobby_Magee--One_More_Time.wav' \
+    '04-Grosse_Fuge.ogg')
 
 errorCode=0
 
