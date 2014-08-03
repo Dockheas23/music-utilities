@@ -7,7 +7,7 @@ EXTRA_DIST = package
 
 targetdir = target
 artifactdir = $(targetdir)/$(distdir)
-sourcerepodir = $(DEV_SERVER):/var/www/repo/source/
+sourcerepodir = $(DEV_SERVER):/var/www/repo/source
 archrepodir = $(DEV_SERVER):/var/www/repo/arch
 debianrepodir = $(DEV_SERVER):/var/www/repo/debian/incoming
 
@@ -18,11 +18,11 @@ DEB_FILE = $(targetdir)/$(PACKAGE_TARNAME)_$(PACKAGE_VERSION)-1_all.deb
 deploy-source: dist
 	$(RSYNC) $(DIST_ARCHIVES) $(sourcerepodir)
 
-deploy-arch: dist-arch deploy
+deploy-arch: dist-arch
 	$(RSYNC) $(ARCH_TARBALL) $(archrepodir)
 
 deploy-debian: dist-debian
-	$(RSYNC) $(builddir)/*.deb $(debianrepodir)
+	$(RSYNC) $(targetdir)/*.{deb,dsc,gz,changes} $(debianrepodir)
 	debarchiver -o --autoscanall
 
 dist-arch: $(ARCH_TARBALL)
@@ -33,7 +33,7 @@ $(ARCH_TARBALL): dist
 	$(INSTALL) -d $(artifactdir)
 	cp package/arch/PKGBUILD $(artifactdir)
 	sed -i "2a \
-	    md5sums('$(shell $(MD5_PROGRAM) $(DIST_ARCHIVES) | \
+	    md5sums=('$(shell $(MD5_PROGRAM) $(DIST_ARCHIVES) | \
 	    awk '{print $$1}')')" $(artifactdir)/PKGBUILD
 	sed -i "2a \
 	    pkgver=$(PACKAGE_VERSION)" $(artifactdir)/PKGBUILD

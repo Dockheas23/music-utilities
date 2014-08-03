@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([Music-Utilities], [1.1], [george@thebuds.net])
+AC_INIT([Music-Utilities], [1.2], [george@thebuds.net])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.

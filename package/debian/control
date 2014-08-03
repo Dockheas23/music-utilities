@@ -10,7 +10,7 @@ Vcs-Git: git://gitorious.org/music-utilities/music-utilities.git
 
 Package: music-utilities
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, flac, vorbis-tools, python3
+Depends: ${misc:Depends}, flac, vorbis-tools, python3
 Recommends: cdparanoia
 Description: Command-line utilities for managing a music collection
  TBC
